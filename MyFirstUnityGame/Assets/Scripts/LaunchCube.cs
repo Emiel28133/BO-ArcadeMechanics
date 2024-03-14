@@ -6,6 +6,7 @@ public class Example : MonoBehaviour
 {
     Rigidbody m_Rigidbody;
     public float m_Thrust = 20f;
+    public float gravityScale = 5;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class Example : MonoBehaviour
         {
             //Apply a force to this Rigidbody in direction of this GameObjects up axis
             m_Rigidbody.AddForce(transform.up * m_Thrust);
+            m_Rigidbody.AddForce(Physics.gravity * (gravityScale - 1) * m_Rigidbody.mass);
         }
     }
 }
