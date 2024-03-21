@@ -16,7 +16,7 @@ public class Animatie : MonoBehaviour
     void Update()
     {
         //Check voor verticale input
-        if (Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("Horizontal") > 0)
         {
             //is de waarde groter dan 0 dan heb je een knop naar boven ingedrukt
             //Roep de juiste trigger aan!
@@ -26,7 +26,7 @@ public class Animatie : MonoBehaviour
             ani.ResetTrigger("WalkR");
             //ResetTrigger is Trigger de-activeren
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (Input.GetAxis("Horizontal") < 0)
         {
             //is de waarde kleiner dan 0 dan heb je een knop naar beneden ingedrukt
             //Roep de juiste trigger aan
