@@ -7,20 +7,19 @@ public class keepScore : MonoBehaviour
 {
 
     private TMP_Text scoreField;
-    private int score = 0;
+    private int score;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
-        scoreField.text = "" + score;
         scoreField = GetComponent<TMP_Text>();
+        scoreField.text = " " + score;
     }
 
-    // Update is called once per frame
     public void AddScore(int add)
     {
         score += add;
-        scoreField.text = "" + score;
+        scoreField.text = " " + score;
     }
 }

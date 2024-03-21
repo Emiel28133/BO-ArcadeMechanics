@@ -6,11 +6,13 @@ public class coinPickUp : MonoBehaviour
 {
     private Renderer r;
     private keepScore scoreScript;
-
+    private GameObject scoreObj;
     void Start()
     {  
         r = GetComponent<Renderer>();
-        scoreScript = FindObjectOfType<keepScore>();
+        scoreObj = GameObject.FindWithTag("score");
+        scoreScript = scoreObj.GetComponent<keepScore>();
+        
     }
         
     void OnTriggerEnter(Collider other)

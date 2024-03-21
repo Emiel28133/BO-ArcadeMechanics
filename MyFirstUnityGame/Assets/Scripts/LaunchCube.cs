@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class Example : MonoBehaviour
 {
-    Rigidbody m_Rigidbody;
-    public float m_Thrust = 20f;
-    public float gravityScale = 5;
+    Rigidbody rb;
+    public float m_Thrust = 1f;
+    private float gravityScale = 1f;
     private bool onFloor = false;
-    
+    public float gravScaleUp = 2f; // Define the gravity scale when going up
+    public float gravScaleDown = 0.5f; // Define the gravity scale when going down
+
 
     void Start()
     {
         //Fetch the Rigidbody from the GameObject with this script attached
-        m_Rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -40,6 +43,16 @@ public class Example : MonoBehaviour
 
     void Update()
     {
+
+        if (rb.velocity.y > 0)
+        {
+            gravityScale = gravScaleUp;
+        }
+        else if (rb.velocity.y < 0)
+        {
+            gravityScale = gravScaleDown;
+        }
+
         if (Input.GetButton("Jump"))
         {
             //Apply a force to this Rigidbody in direction of this GameObjects up axis
@@ -47,10 +60,14 @@ public class Example : MonoBehaviour
            // m_Rigidbody.AddForce(Physics.gravity * (gravityScale - 1) * m_Rigidbody.mass);
             if (Input.GetKeyDown(KeyCode.Space) && onFloor == true)
             {
-                m_Rigidbody.AddForce(transform.up * m_Thrust);
-                m_Rigidbody.AddForce(Physics.gravity * (gravityScale - 1) * m_Rigidbody.mass);
+                rb.AddForce(transform.up * m_Thrust);
+                rb.AddForce(Physics.gravity * (gravityScale - 1) * rb.mass);
+
             }
+
         }
+
+
     }
 }
 
