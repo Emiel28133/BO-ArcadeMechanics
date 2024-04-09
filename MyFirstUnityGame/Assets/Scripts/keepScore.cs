@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class keepScore : MonoBehaviour
 {
@@ -21,5 +22,10 @@ public class keepScore : MonoBehaviour
     {
         score += add;
         scoreField.text = " " + score;
+
+        if (score >= 20) 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
